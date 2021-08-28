@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="leftScore">0</string>
+    <string name="rightScore">0</string>
+    <string name="add3text">+3</string>
+    <string name="add2text">+2</string>
+    <string name="add1text">+1</string>
+    <string name="reset">Reset</string>
+    <string name="header">Basketball Game</string>
+    <string name="leftTeam">Team 1</string>
+    <string name="rightTeam">Team 2</string>
+    <string name="newTeams">New Game</string>
+    <string name="newTeam1">Team 1 Name</string>
+    <string name="newTeam2">Team 2 Name</string>
+    <string name="submit">Submit</string>
+    <string name="teamSelectionSubmit">Lets go!</string>
+    <string name="timeSelection">Game Time</string>
+    <string name="clock">00:00</string>
+    <string name="startClock">Start Game</string>
+    <string name="gameOver">Game Over</string>
+</resources>
