@@ -9,7 +9,7 @@ import android.widget.EditText
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game_page)
+        setContentView(R.layout.activity_main)
     }
     fun startGame(view: View){
         val team1Name = findViewById<EditText>(R.id.newTeam1)
