@@ -14,6 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate Called")
         setContentView(R.layout.activity_main)
+        val currFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        if(currFragment == null){
+            val fragment = MainFragment()
+            supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -56,21 +61,5 @@ class MainActivity : AppCompatActivity() {
         team2Name.setText(savedInstanceState.getString("team2Name"))
         val gameTime = findViewById<EditText>(R.id.timeSelection)
         gameTime.setText(savedInstanceState.getString("gameTime"))
-    }
-    fun startGame(view: View){
-        val team1Name = findViewById<EditText>(R.id.newTeam1)
-        val team1NameText = team1Name.text.toString()
-        val team2Name = findViewById<EditText>(R.id.newTeam2)
-        val team2NameText = team2Name.text.toString()
-        val gameTime = findViewById<EditText>(R.id.timeSelection)
-        val gameTimeText = gameTime.text.toString()
-        val bundle = Bundle()
-        bundle.putString("team1Name", team1NameText)
-        bundle.putString("team2Name", team2NameText)
-        bundle.putString("gameTime", gameTimeText)
-        val intent = Intent(this, gamePage::class.java).apply {
-            putExtras(bundle)
-        }
-        startActivity(intent)
     }
 }
