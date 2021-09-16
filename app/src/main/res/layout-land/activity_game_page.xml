@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gamePage">
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="@string/header"
+        android:textSize="40sp"/>
+    <TextView
+        android:id="@+id/gameClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/clock"
+        android:textSize="25sp"
+        android:layout_marginTop="0dp"/>
+
+    <Button
+        android:id="@+id/add3right"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="112dp"
+        android:onClick="addScore"
+        android:text="@string/add3text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rightTeam" />
+
+    <TextView
+        android:id="@+id/scoreRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="136dp"
+        android:text="@string/rightScore"
+        android:textSize="50sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <Button
+        android:id="@+id/add1right"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="112dp"
+        android:onClick="addScore"
+        android:text="@string/add1text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add2right" />
+
+    <Button
+        android:id="@+id/add2right"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="112dp"
+        android:onClick="addScore"
+        android:text="@string/add2text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add3right" />
+
+    <TextView
+        android:id="@+id/rightTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="136dp"
+        android:text="@string/rightTeam"
+        android:textSize="20sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreRight" />
+
+    <Button
+        android:id="@+id/add2left"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="116dp"
+        android:onClick="addScore"
+        android:text="@string/add2text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add3left" />
+
+    <TextView
+        android:id="@+id/scoreLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="140dp"
+        android:text="@string/leftScore"
+        android:textSize="50sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <TextView
+        android:id="@+id/leftTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="140dp"
+        android:text="@string/leftTeam"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreLeft" />
+
+    <Button
+        android:id="@+id/add3left"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="8dp"
+        android:onClick="addScore"
+        android:text="@string/add3text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/leftTeam" />
+
+    <Button
+        android:id="@+id/add1left"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="116dp"
+        android:onClick="addScore"
+        android:text="@string/add1text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add2left" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:onClick="reset"
+        android:text="@string/reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameClock" />
+
+    <Button
+        android:id="@+id/newTeams"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="newTeams"
+        android:text="@string/newTeams"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startClock" />
+
+    <Button
+        android:id="@+id/startClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:onClick="startClock"
+        android:text="@string/startClock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reset" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

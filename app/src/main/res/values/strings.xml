@@ -9,7 +9,7 @@
     <string name="header">Basketball Game</string>
     <string name="leftTeam">Team 1</string>
     <string name="rightTeam">Team 2</string>
-    <string name="newTeams">New Game</string>
+    <string name="newTeams">New Teams</string>
     <string name="newTeam1">Team 1 Name</string>
     <string name="newTeam2">Team 2 Name</string>
     <string name="submit">Submit</string>
@@ -18,4 +18,7 @@
     <string name="clock">00:00</string>
     <string name="startClock">Start Game</string>
     <string name="gameOver">Game Over</string>
+    <string name="save">Save Game</string>
+    <string name="gameListHeader">Game Saved!</string>
+    <string name="back">Back</string>
 </resources>

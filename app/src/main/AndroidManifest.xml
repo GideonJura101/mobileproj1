@@ -23,6 +23,7 @@
         </activity>
         <activity
             android:name=".gamePage"/>
+        <activity android:name=".GameList"/>
 
     </application>
 

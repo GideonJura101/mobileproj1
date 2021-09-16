@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Ryan/AndroidStudioProjects/mobileproj1/app/src/main/res/layout/activity_game_page.xml" value="0.20572916666666666" />
-        <entry key="..\:/Users/Ryan/AndroidStudioProjects/mobileproj1/app/src/main/res/layout/activity_main.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/birch/AndroidStudioProjects/MyApplication/app/src/main/res/layout-land/activity_game_page.xml" value="0.222663139329806" />
+        <entry key="..\:/Users/birch/AndroidStudioProjects/MyApplication/app/src/main/res/layout-land/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/birch/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_create_teams.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/birch/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_game_list.xml" value="0.24375" />
+        <entry key="..\:/Users/birch/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_game_page.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/birch/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/birch/AndroidStudioProjects/MyApplication/app/src/main/res/layout/team_creation.xml" value="0.36666666666666664" />
       </map>
