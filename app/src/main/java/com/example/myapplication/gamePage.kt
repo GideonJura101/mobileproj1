@@ -16,18 +16,19 @@ import androidx.lifecycle.ViewModelProvider
 private const val TAG = "gamePage"
 private const val REQUEST_CODE_GAME_LIST = 0
 class gamePage : AppCompatActivity(){
-    private val gameViewModel : scoreViewModel by lazy{
-        ViewModelProvider(this).get(scoreViewModel::class.java)
-    }
+    private lateinit var currGameModel : gameModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate Called")
         setContentView(R.layout.activity_game_page)
         val bundle = intent.extras
-        gameViewModel.team1Name = bundle?.getString("team1Name")!!
-        gameViewModel.team2Name = bundle.getString("team2Name")!!
-        gameViewModel.gameTime = bundle.getString("gameTime")!!
-            gameViewModel.gameClock = bundle.getString("gameTime")!! + ":" + "00"
+        currGameModel = object : gameModel() {
+        }
+        currGameModel.team1Name = bundle?.getString("team1Name")!!
+        currGameModel.team2Name = bundle.getString("team2Name")!!
+        currGameModel.gameTime = bundle.getString("gameTime")!!
+        currGameModel.gameClock = bundle.getString("gameTime")!! + ":" + "00"
         val currFragment = supportFragmentManager.findFragmentById(R.id.fragment_container1)
         if(currFragment == null){
             val fragment = GamePageFragment()
@@ -61,12 +62,12 @@ class gamePage : AppCompatActivity(){
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        val gameMins = gameViewModel.gameClock.split(":")
-            /**if(gameMins[0] != gameViewModel.gameTime){
+        val gameMins = currGameModel.gameClock.split(":")
+            /**if(gameMins[0] != currGameModel.gameTime){
             clock((gameMins[0].toLong() * 60 * 1000) + (gameMins[1].toLong()*1000))
         }*/
     }
-    fun getData(): scoreViewModel {
-        return gameViewModel
+    fun getData(): gameModel {
+        return currGameModel
     }
 }

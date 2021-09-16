@@ -13,6 +13,11 @@ class GameList : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate Called")
         setContentView(R.layout.activity_game_list)
+        val currFragment = supportFragmentManager.findFragmentById(R.id.fragment_container2)
+        if(currFragment == null){
+            val fragment = GameListFragment.newInstance()
+            supportFragmentManager.beginTransaction().add(R.id.fragment_container2, fragment).commit()
+        }
     }
     override fun onStart(){
         super.onStart()

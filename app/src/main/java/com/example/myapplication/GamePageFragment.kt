@@ -29,7 +29,7 @@ class GamePageFragment : Fragment() {
     private lateinit var startGame : Button
     private lateinit var saveGame : Button
     private lateinit var newTeams : Button
-    private lateinit var gameViewModel : scoreViewModel
+    private lateinit var currGameModel : gameModel
     var currTimer: CountDownTimer? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_game_page, container, false)
@@ -59,44 +59,44 @@ class GamePageFragment : Fragment() {
         newTeams = view.findViewById(R.id.newTeams)
         newTeams.setOnClickListener { newTeams() }
         val activity : gamePage? = activity as gamePage?
-        gameViewModel = activity!!.getData()
-        team1Name.text = gameViewModel.team1Name
-        team2Name.text = gameViewModel.team2Name
-        team1Score.text = gameViewModel.team1Score
-        team2Score.text = gameViewModel.team2Score
-        gameClock.text = gameViewModel.gameClock
+        currGameModel = activity!!.getData()
+        team1Name.text = currGameModel.team1Name
+        team2Name.text = currGameModel.team2Name
+        team1Score.text = currGameModel.team1Score
+        team2Score.text = currGameModel.team2Score
+        gameClock.text = currGameModel.gameClock
         return view
     }
     fun addScore(v:View?){
         when(v?.id){
-            R.id.add3left -> gameViewModel.team1Score = (gameViewModel.team1Score.toInt() + 3).toString()
-            R.id.add3right -> gameViewModel.team2Score = (gameViewModel.team2Score.toInt() + 3).toString()
-            R.id.add2left -> gameViewModel.team1Score = (gameViewModel.team1Score.toInt() + 2).toString()
-            R.id.add2right -> gameViewModel.team2Score = (gameViewModel.team2Score.toInt() + 2).toString()
-            R.id.add1left -> gameViewModel.team1Score = (gameViewModel.team1Score.toInt() + 1).toString()
-            R.id.add1right -> gameViewModel.team2Score = (gameViewModel.team2Score.toInt() + 1).toString()
+            R.id.add3left -> currGameModel.team1Score = (currGameModel.team1Score.toInt() + 3).toString()
+            R.id.add3right -> currGameModel.team2Score = (currGameModel.team2Score.toInt() + 3).toString()
+            R.id.add2left -> currGameModel.team1Score = (currGameModel.team1Score.toInt() + 2).toString()
+            R.id.add2right -> currGameModel.team2Score = (currGameModel.team2Score.toInt() + 2).toString()
+            R.id.add1left -> currGameModel.team1Score = (currGameModel.team1Score.toInt() + 1).toString()
+            R.id.add1right -> currGameModel.team2Score = (currGameModel.team2Score.toInt() + 1).toString()
         }
-        team1Score.text = gameViewModel.team1Score
-        team2Score.text = gameViewModel.team2Score
+        team1Score.text = currGameModel.team1Score
+        team2Score.text = currGameModel.team2Score
     }
     fun reset(){
         currTimer?.cancel()
         currTimer = null
-        gameViewModel.gameClock = gameViewModel.gameTime + ":" + "00"
-        gameViewModel.team1Score = "0"
-        gameViewModel.team2Score = "0"
-        team1Score.text = gameViewModel.team1Score
-        team2Score.text = gameViewModel.team2Score
-        gameClock.text = gameViewModel.gameClock
+        currGameModel.gameClock = currGameModel.gameTime + ":" + "00"
+        currGameModel.team1Score = "0"
+        currGameModel.team2Score = "0"
+        team1Score.text = currGameModel.team1Score
+        team2Score.text = currGameModel.team2Score
+        gameClock.text = currGameModel.gameClock
 
     }
     fun startClock(){
-        if(gameViewModel.gameTime == getString(R.string.gameOver)){
-            gameViewModel.gameClock = gameViewModel.gameTime + ":" + "00"
-            gameClock.text = gameViewModel.gameClock
+        if(currGameModel.gameTime == getString(R.string.gameOver)){
+            currGameModel.gameClock = currGameModel.gameTime + ":" + "00"
+            gameClock.text = currGameModel.gameClock
         }
         else{
-            val milliGameTime = (gameViewModel.gameTime.toLong()) * 60 * 1000
+            val milliGameTime = (currGameModel.gameTime.toLong()) * 60 * 1000
             println(milliGameTime)
             clock(milliGameTime)
         }
@@ -108,7 +108,7 @@ class GamePageFragment : Fragment() {
     }
     fun save(){
         val intent = Intent(activity, GameList::class.java).apply{
-            putExtra("gameViewModel",gameViewModel)
+            putExtra("currGameModel",currGameModel)
         }
 
         startActivityForResult(intent, REQUEST_CODE_GAME_LIST)
@@ -118,19 +118,19 @@ class GamePageFragment : Fragment() {
         currTimer = object : CountDownTimer(x, 1000){
             override fun onTick(tillFin: Long) {
                 if(((tillFin/1000)%60) < 10){
-                    gameViewModel.gameClock = "" + ((tillFin/1000)/60) + ":0" + ((tillFin/1000)%60)
-                    gameClock.text = gameViewModel.gameClock
+                    currGameModel.gameClock = "" + ((tillFin/1000)/60) + ":0" + ((tillFin/1000)%60)
+                    gameClock.text = currGameModel.gameClock
                 }
                 else{
-                    gameViewModel.gameClock = "" + ((tillFin/1000)/60) + ":" + ((tillFin/1000)%60)
-                    gameClock.text = gameViewModel.gameClock
+                    currGameModel.gameClock = "" + ((tillFin/1000)/60) + ":" + ((tillFin/1000)%60)
+                    gameClock.text = currGameModel.gameClock
                 }
 
             }
 
             override fun onFinish() {
-                gameViewModel.gameClock = getString(R.string.gameOver)
-                gameClock.text = gameViewModel.gameClock
+                currGameModel.gameClock = getString(R.string.gameOver)
+                gameClock.text = currGameModel.gameClock
             }
         }.start()
     }
