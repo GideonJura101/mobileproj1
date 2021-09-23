@@ -149,11 +149,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="70dp"
+        app:layout_constraintRight_toLeftOf="@id/display"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/startClock"
         android:text="@string/save" />
+    <Button
+        android:id="@+id/display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        app:layout_constraintLeft_toRightOf="@id/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startClock"
+        android:text="@string/display" />
     <Button
         android:id="@+id/newTeams"
         android:layout_width="wrap_content"

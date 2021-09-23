@@ -5,23 +5,29 @@ import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.io.Serializable
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.util.*
 
 private const val TAG = "scoreViewModel"
+
 open class gameModel : Serializable  {
-    var gameIndex = ""
-    var team1Name = ""
-    var team2Name = ""
-    var gameTime = ""
-    var gameClock = ""
-    var team1Score = "0"
-    var team2Score = "0"
-    var winTeam = 0
-    var gameDate: LocalDate = LocalDate.now()
+    var gameIndex : String = ""
+    var team1Name : String = ""
+    var team2Name : String = ""
+    var gameTime : String = ""
+    var gameClock : String = ""
+    var team1Score : String = "0"
+    var team2Score : String = "0"
+    var winTeam : Int = 0
+    var gameDate: Date = Date()
+    var id : UUID = UUID.randomUUID()
     init{
         whoWon()
+        id = UUID.randomUUID()
         Log.d(TAG, "scoreViewModel instance Created")
     }
     fun whoWon(){

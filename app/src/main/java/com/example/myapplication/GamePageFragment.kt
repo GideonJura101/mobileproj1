@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 private const val REQUEST_CODE_GAME_LIST = 0
 class GamePageFragment : Fragment() {
@@ -30,6 +32,7 @@ class GamePageFragment : Fragment() {
     private lateinit var saveGame : Button
     private lateinit var newTeams : Button
     private lateinit var currGameModel : gameModel
+    private lateinit var displayGame : Button
     var currTimer: CountDownTimer? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_game_page, container, false)
@@ -58,6 +61,8 @@ class GamePageFragment : Fragment() {
         saveGame.setOnClickListener { save() }
         newTeams = view.findViewById(R.id.newTeams)
         newTeams.setOnClickListener { newTeams() }
+        displayGame = view.findViewById(R.id.display)
+        displayGame.setOnClickListener{ displayGames() }
         val activity : gamePage? = activity as gamePage?
         currGameModel = activity!!.getData()
         team1Name.text = currGameModel.team1Name
@@ -107,11 +112,34 @@ class GamePageFragment : Fragment() {
         startActivity(intent)
     }
     fun save(){
+        val gameData = gameData()
+        gameData.teamAName = currGameModel.team1Name
+        gameData.teamBName = currGameModel.team2Name
+        gameData.teamAScore = currGameModel.team1Score
+        gameData.teamBScore = currGameModel.team2Score
+        gameData.date = currGameModel.gameDate
+        gameData.gameTime = currGameModel.gameTime
+        gameData.id = currGameModel.id
+        val gameRepository = GameRepository.get()
+        gameRepository.insertGame(gameData)
+        Toast.makeText(context, "Game Saved!", Toast.LENGTH_SHORT).show()
         val intent = Intent(activity, GameList::class.java).apply{
             putExtra("currGameModel",currGameModel)
         }
 
         startActivityForResult(intent, REQUEST_CODE_GAME_LIST)
+    }
+    fun displayGames(){
+        val gameData = gameData()
+        gameData.teamAName = currGameModel.team1Name
+        gameData.teamBName = currGameModel.team2Name
+        gameData.teamAScore = currGameModel.team1Score
+        gameData.teamBScore = currGameModel.team2Score
+        gameData.date = currGameModel.gameDate
+        gameData.gameTime = currGameModel.gameTime
+        gameData.id = currGameModel.id
+        val gameRepository = GameRepository.get()
+        gameRepository.insertGame(gameData)
     }
     fun clock(x: Long) {
         currTimer?.cancel()

@@ -7,21 +7,12 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/gameTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GameTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
         android:id="@+id/gameDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GameDate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/gameTime"
-        app:layout_constraintTop_toBottomOf="@id/gameTitle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/gameTime"
@@ -72,8 +63,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/_32_1328230_flame_free_icon_fire_icon" />
