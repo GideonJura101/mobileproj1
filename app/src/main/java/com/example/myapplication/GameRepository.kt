@@ -24,6 +24,7 @@ class GameRepository private constructor(context : Context) {
 
     fun insertGame(gameData: gameData) = gameDao.insertGame(gameData)
     fun deleteAll() = gameDao.deleteAll()
+    fun updateGame(gameData: gameData) = gameDao.updateGame(gameData)
 
     companion object{
         private var INSTANCE: GameRepository? = null

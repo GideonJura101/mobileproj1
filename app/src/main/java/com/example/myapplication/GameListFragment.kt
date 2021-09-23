@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -84,6 +85,18 @@ class GameListFragment : Fragment() {
         }
         override fun onClick(v : View){
             Toast.makeText(context, "${game.id} pressed!", Toast.LENGTH_SHORT).show()
+            val bundle = Bundle()
+            bundle.putString("team1Name", game.teamAName)
+            bundle.putString("team2Name", game.teamBName)
+            bundle.putString("gameTime", game.gameTime)
+            bundle.putString("id", game.id.toString())
+            bundle.putString("team1Score", game.teamAScore)
+            bundle.putString("team2Score", game.teamBScore)
+            val intent = Intent(activity, gamePage::class.java).apply {
+                putExtras(bundle)
+            }
+            startActivity(intent)
+
         }
     }
     private inner class GameAdapter(var games : List<gameData>) : RecyclerView.Adapter<GameHolder>(){

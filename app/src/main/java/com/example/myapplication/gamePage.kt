@@ -12,6 +12,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.myapplication.database.GameTypeConverters
+import java.util.*
 
 private const val TAG = "gamePage"
 private const val REQUEST_CODE_GAME_LIST = 0
@@ -29,6 +31,11 @@ class gamePage : AppCompatActivity(){
         currGameModel.team2Name = bundle.getString("team2Name")!!
         currGameModel.gameTime = bundle.getString("gameTime")!!
         currGameModel.gameClock = bundle.getString("gameTime")!! + ":" + "00"
+        if(bundle.containsKey("id")){
+            currGameModel.id = UUID.fromString(bundle.getString("id"))
+            currGameModel.team1Score = bundle.getString("team1Score")!!
+            currGameModel.team2Score = bundle.getString("team2Score")!!
+        }
         val currFragment = supportFragmentManager.findFragmentById(R.id.fragment_container1)
         if(currFragment == null){
             val fragment = GamePageFragment()

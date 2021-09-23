@@ -121,7 +121,12 @@ class GamePageFragment : Fragment() {
         gameData.gameTime = currGameModel.gameTime
         gameData.id = currGameModel.id
         val gameRepository = GameRepository.get()
-        gameRepository.insertGame(gameData)
+        if(gameRepository.getGame(gameData.id).value?.id == null){
+            gameRepository.insertGame(gameData)
+        }
+        else{
+            gameRepository.updateGame(gameData)
+        }
         Toast.makeText(context, "Game Saved!", Toast.LENGTH_SHORT).show()
         val intent = Intent(activity, GameList::class.java).apply{
             putExtra("currGameModel",currGameModel)
@@ -130,7 +135,7 @@ class GamePageFragment : Fragment() {
         startActivityForResult(intent, REQUEST_CODE_GAME_LIST)
     }
     fun displayGames(){
-        val gameData = gameData()
+        /**val gameData = gameData()
         gameData.teamAName = currGameModel.team1Name
         gameData.teamBName = currGameModel.team2Name
         gameData.teamAScore = currGameModel.team1Score
@@ -139,7 +144,12 @@ class GamePageFragment : Fragment() {
         gameData.gameTime = currGameModel.gameTime
         gameData.id = currGameModel.id
         val gameRepository = GameRepository.get()
-        gameRepository.insertGame(gameData)
+        gameRepository.insertGame(gameData)**/
+        val intent = Intent(activity, GameList::class.java).apply{
+            putExtra("currGameModel",currGameModel)
+        }
+
+        startActivityForResult(intent, REQUEST_CODE_GAME_LIST)
     }
     fun clock(x: Long) {
         currTimer?.cancel()
