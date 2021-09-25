@@ -23,7 +23,7 @@ class GameListFragment : Fragment() {
     }
     private lateinit var gameRecyclerView : RecyclerView
     private var adapter : GameAdapter? = GameAdapter(emptyList())
-
+    private lateinit var winner : String
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,11 +33,38 @@ class GameListFragment : Fragment() {
         gameRecyclerView = view.findViewById(R.id.gameRecyclerView) as RecyclerView
         gameRecyclerView.layoutManager = LinearLayoutManager(context)
         gameRecyclerView.adapter = adapter
+        val activity : GameList? = activity as GameList?
+        winner = activity!!.getWinner()
+        if(activity.getWinner() == "1"){
+            Log.d(TAG, "Winner1")
+            gameListViewModel.teamAData()
+        }
+        else if(activity.getWinner() == "2"){
+            Log.d(TAG, "Winner2")
+            gameListViewModel.teamBData()
+        }
+        else{
+            Log.d(TAG, "Winner0")
+            gameListViewModel.allData()
+        }
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val activity : GameList = activity as GameList
+        if(activity.getWinner() == "1"){
+            Log.d(TAG, "Winner1")
+            gameListViewModel.teamAData()
+        }
+        else if(activity.getWinner() == "2"){
+            Log.d(TAG, "Winner2")
+            gameListViewModel.teamBData()
+        }
+        else{
+            Log.d(TAG, "Winner0")
+            gameListViewModel.allData()
+        }
         gameListViewModel.gameListLiveData.observe(
             viewLifecycleOwner,
             Observer {
@@ -49,6 +76,7 @@ class GameListFragment : Fragment() {
         )
     }
     private fun updateUI(games : List<gameData>){
+
         adapter = GameAdapter(games)
         gameRecyclerView.adapter = adapter
     }

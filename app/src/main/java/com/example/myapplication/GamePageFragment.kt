@@ -130,6 +130,7 @@ class GamePageFragment : Fragment() {
         Toast.makeText(context, "Game Saved!", Toast.LENGTH_SHORT).show()
         val intent = Intent(activity, GameList::class.java).apply{
             putExtra("currGameModel",currGameModel)
+            putExtra("winner", "0")
         }
 
         startActivityForResult(intent, REQUEST_CODE_GAME_LIST)
@@ -145,11 +146,22 @@ class GamePageFragment : Fragment() {
         gameData.id = currGameModel.id
         val gameRepository = GameRepository.get()
         gameRepository.insertGame(gameData)**/
-        val intent = Intent(activity, GameList::class.java).apply{
-            putExtra("currGameModel",currGameModel)
+        var winner = "`"
+        if(currGameModel.team1Score.toInt() > currGameModel.team2Score.toInt()){
+            winner = "1"
         }
+        else if(currGameModel.team2Score.toInt() > currGameModel.team1Score.toInt()){
+            winner = "2"
+        }
+        else{
+            winner = "0"
+        }
+        val intent = Intent(activity, GameList::class.java).apply{
 
-        startActivityForResult(intent, REQUEST_CODE_GAME_LIST)
+        }
+        intent.putExtra("currGameModel",currGameModel)
+        intent.putExtra("winner", winner)
+        startActivity(intent)
     }
     fun clock(x: Long) {
         currTimer?.cancel()

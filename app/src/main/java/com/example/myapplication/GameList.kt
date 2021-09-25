@@ -9,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 
 private const val TAG = "GameList"
 class GameList : AppCompatActivity(){
+    private lateinit var winner : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate Called")
         setContentView(R.layout.activity_game_list)
+        winner = intent.extras?.get("winner") as String
         val currFragment = supportFragmentManager.findFragmentById(R.id.fragment_container2)
         if(currFragment == null){
             val fragment = GameListFragment.newInstance()
@@ -38,6 +40,9 @@ class GameList : AppCompatActivity(){
     override fun onDestroy(){
         super.onDestroy()
         Log.d(TAG, "onDestroy Called")
+    }
+    fun getWinner(): String{
+        return winner
     }
     fun back(v : View){
         val data = Intent().apply {

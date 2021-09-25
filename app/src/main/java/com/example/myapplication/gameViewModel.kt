@@ -22,16 +22,15 @@ class gameViewModel : ViewModel() {
         }
     }**/
     private val gameRepository = GameRepository.get()
-    val gameListLiveData = gameRepository.getGames()
-    fun addGames(){
-        for(i in 0 until 150){
-            val gameData = gameData()
-            gameData.teamAName = "TeamA${i}"
-            gameData.teamBName = "TeamB${i}"
-            gameData.teamAScore = "${i}"
-            gameData.teamBScore = "" + (150-i)
-            gameData.date = Date()
-            gameRepository.insertGame(gameData)
-        }
+    var gameListLiveData = gameRepository.getGames()
+    fun teamAData(){
+        gameListLiveData = gameRepository.getTeamAWin()
     }
+    fun teamBData(){
+        gameListLiveData = gameRepository.getTeamBWin()
+    }
+    fun allData(){
+        gameListLiveData = gameRepository.getGames()
+    }
+
 }
