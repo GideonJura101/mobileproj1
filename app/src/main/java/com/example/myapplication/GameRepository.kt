@@ -19,7 +19,7 @@ class GameRepository private constructor(context : Context) {
     private val gameDao = database.gameDao()
 
     fun getGames(): LiveData<List<gameData>> = gameDao.getGames()
-
+    fun checkEmpty(): Int = gameDao.checkEmpty()
     fun getGame(id:UUID):LiveData<gameData?> = gameDao.getGame(id)
     fun getTeamAWin() : LiveData<List<gameData>> = gameDao.getTeamAWin()
     fun getTeamBWin() : LiveData<List<gameData>> = gameDao.getTeamBWin()

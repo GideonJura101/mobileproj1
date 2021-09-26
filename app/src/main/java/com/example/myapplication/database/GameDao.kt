@@ -26,6 +26,9 @@ interface GameDao {
     @Query("Delete FROM table_game")
     fun deleteAll()
 
+    @Query("SELECT count(*) FROM table_game")
+    fun checkEmpty() : Int
+
     @Update
     fun updateGame(gameData: gameData)
 }
